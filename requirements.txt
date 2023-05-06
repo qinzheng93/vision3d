@@ -1,0 +1,17 @@
+torch>=1.11.0
+numpy
+scipy
+tqdm
+loguru
+easydict
+h5py
+pykeops
+torch_scatter
+open3d==0.11.2
+scikit-learn
+scikit-image
+einops
+tensorboard
+IPython
+ipdb
+opencv-python

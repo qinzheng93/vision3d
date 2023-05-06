@@ -1,0 +1,14 @@
+# exclude package building files
+vision3d.egg-info
+vision3d/dist
+**/__pycache__
+**/*.so
+**/build
+**/.idea
+**/.vscode
+
+# exclude project files
+trash
+output
+experiments
+pretrained
