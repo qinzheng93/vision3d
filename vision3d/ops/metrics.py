@@ -362,9 +362,12 @@ def compute_corr_coverage(q_points: Tensor, s_points: Tensor, distance_limit: fl
     return coverage
 
 
-def compute_chamfer_distance(q_points: Tensor, s_points: Tensor) -> Tensor:
+def compute_chamfer_distance(q_points: Tensor, s_points: Tensor, squared: bool = False) -> Tensor:
     q_nn_distances, q_nn_indices = knn(q_points, s_points, k=1, return_distance=True)
     s_nn_distances, s_nn_indices = knn(s_points, q_points, k=1, return_distance=True)
+    if squared:
+        q_nn_distances = q_nn_distances.pow(2)
+        s_nn_distances = s_nn_distances.pow(2)
     chamfer_distance = q_nn_distances.mean() + s_nn_distances.mean()
     return chamfer_distance
 

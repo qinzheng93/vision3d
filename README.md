@@ -31,7 +31,7 @@ Vision3D is a 3D vision library built with PyTorch, in order to reproduce the st
 
 ## Installation
 
-Vision3D is tested on Python 3.8, PyTorch 1.7.1, Ubuntu 20.04, CUDA 11.2 and cuDNN 8.1.0, but it should work with other configurations. Currently, Vision3d only support training and testing on GPUs.
+Vision3D is tested on Python 3.8, PyTorch 1.13.1, Ubuntu 22.04, GCC 11.3 and CUDA 11.7, but it should work with other configurations. Currently, Vision3d only support training and testing on GPUs.
 
 Install Vision3D with the following command:
 

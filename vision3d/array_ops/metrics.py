@@ -131,11 +131,11 @@ def registration_chamfer_distance(
     """Compute the modified chamfer distance (RPMNet)."""
     # P_t -> Q_raw
     aligned_src_points = apply_transform(src_points, est_transform)
-    chamfer_distance_p_q = knn(aligned_src_points, raw_points, k=1, return_distance=True)[0].pow(2).mean()
+    chamfer_distance_p_q = np.power(knn(aligned_src_points, raw_points, k=1, return_distance=True)[0], 2).mean()
     # Q -> P_raw
     composed_transform = np.matmul(est_transform, np.linalg.inv(gt_transform))
     aligned_raw_points = apply_transform(raw_points, composed_transform)
-    chamfer_distance_q_p = knn(tgt_points, aligned_raw_points, k=1, return_distance=True)[0].pow(2).mean()
+    chamfer_distance_q_p = np.power(knn(tgt_points, aligned_raw_points, k=1, return_distance=True)[0], 2).mean()
     # sum up
     chamfer_distance = chamfer_distance_p_q + chamfer_distance_q_p
     return chamfer_distance
@@ -171,5 +171,5 @@ def absolute_trajectory_error(gt_trajectory, est_trajectory):
     transform = weighted_procrustes(gt_trajectory, est_trajectory)
     gt_trajectory = apply_transform(gt_trajectory, transform)
     error = np.linalg.norm(gt_trajectory - est_trajectory, axis=1)
-    rmse = np.sqrt(np.mean(error ** 2))
+    rmse = np.sqrt(np.mean(error**2))
     return rmse

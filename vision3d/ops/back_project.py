@@ -26,10 +26,10 @@ def back_project(
         A Tensor of the point image in the shape of (B, 3, H, W).
         A Tensor of the mask image in the shape of (B, H, W).
     """
-    focal_x = intrinsics[..., 0, 0]
-    focal_y = intrinsics[..., 1, 1]
-    center_x = intrinsics[..., 0, 2]
-    center_y = intrinsics[..., 1, 2]
+    focal_x = intrinsics[..., 0:1, 0:1]
+    focal_y = intrinsics[..., 1:2, 1:2]
+    center_x = intrinsics[..., 0:1, 2:3]
+    center_y = intrinsics[..., 1:2, 2:3]
 
     batch_size, height, width = depth_mat.shape
     coords = torch.arange(height * width).view(height, width).to(depth_mat.device).unsqueeze(0).expand_as(depth_mat)
